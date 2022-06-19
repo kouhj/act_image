@@ -29,10 +29,16 @@ on:
 jobs:
   Test-OpenWRT-Buildenv-Docker-Iamge:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    #if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+
+      - name : debug
+        run: |
+          echo event ${{ github.event }}
+          echo workflow_run ${{ github.event.workflow_run }}
+          exit 1
 
       # Pull the docker container and test it
       - name: Test Docker Builder
