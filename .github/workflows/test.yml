@@ -7,7 +7,7 @@ env:
   DK_PASSWORD: ${{secrets.docker_password}}
   TMATE_ENCRYPT_PASSWORD: ${{secrets.TMATE_ENCRYPT_PASSWORD}}
 
-name: Build Docker
+name: Test-OpenWRT-Buildenv-Docker-Iamge
 
 # Controls when the workflow will run
 on:
@@ -21,13 +21,13 @@ on:
   workflow_dispatch:
 
   workflow_run:
-    workflows: ["Build OpenWRT BuildEnv Docker"]
+    workflows: ["Build-OpenWRT-BuildEnv-Docker-Iamge"]
     types:
       - completed
 
 
 jobs:
-  Test-Docker-Iamge:
+  Test-OpenWRT-Buildenv-Docker-Iamge:
     runs-on: ubuntu-latest
 
     steps:
