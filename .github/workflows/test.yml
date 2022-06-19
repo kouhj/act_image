@@ -13,9 +13,9 @@ name: Build Docker
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+    paths:
+      - ".github/workflows/test.yml"
+      - "scripts/test-docker.sh"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
