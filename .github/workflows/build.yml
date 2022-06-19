@@ -42,7 +42,7 @@ jobs:
         run: bash -x scripts/upload-docker.sh
 
       - name: "[Debug] Wait for SSH connection (timeout 5min)"
-        if: step.commit.outputs.status != 'success'
+        if: steps.commit.outputs.status != 'success'
         env:
           TIMEOUT_MIN: 5
         uses: tete1030/safe-debugger-action@dev
