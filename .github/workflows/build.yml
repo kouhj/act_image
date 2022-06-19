@@ -44,6 +44,7 @@ jobs:
       - name: Commit Built Docker
         id: commit
         continue-on-error: true
+        if: steps.build.outputs.status == 'success'
         run: |
           bash -x scripts/upload-docker.sh
           echo ::set-output name=status::sucess
