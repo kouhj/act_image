@@ -19,13 +19,6 @@ echo '{
 sudo service docker restart
 
 echo "${DK_PASSWORD}" | docker login -u "${DK_USERNAME}" --password-stdin "${DK_REGISTRY}"
-
-#docker commit -a "kouhj/OpenWRT_BuildEnv_Docker" -m "Built at $(date)" "${BUILDER_CONTAINER_ID}" "${BUILDER_IMAGE_ID}"
-
-#docker container rm -fv "${BUILDER_CONTAINER_ID}"
-#docker container prune -f
-#docker system prune -f --volumes
-
+docker image tag "${BUILDER_NAME}"  "${BUILDER_IMAGE_ID}" 
 docker push "${BUILDER_IMAGE_ID}"
-docker buildx imagetools create -t "${BUILDER_IMAGE_ID}" "${BUILDER_IMAGE_ID}"
 docker logout "${DK_REGISTRY}"
