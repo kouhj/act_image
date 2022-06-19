@@ -3,7 +3,7 @@ FROM ubuntu:jammy
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN set -x && apt-get update && apt-get upgrade -y && \
-    apt-get install -y apt-uitls && \
+    apt-get install -y apt-utils && \
     apt-get install -y \
         build-essential gcc-multilib g++-multilib \
         lib32gcc-s1 libncurses5 libncurses5-dev zlib1g-dev libssl-dev \
