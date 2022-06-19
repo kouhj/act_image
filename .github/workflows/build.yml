@@ -41,7 +41,7 @@ jobs:
         run: bash -x scripts/upload-docker.sh
 
       - name: "[Debug] Wait for SSH connection (timeout 5min)"
-        if: job.status != 'sucess'
+        if: job.status == 'failure'
         env:
           TIMEOUT_MIN: 5
         uses: tete1030/safe-debugger-action@dev
