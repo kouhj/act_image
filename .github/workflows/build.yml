@@ -38,7 +38,7 @@ jobs:
         continue-on-error: true
         run: |
           docker build -t ${{env.DK_IMAGE_NAME}} .
-          echo ::set-output name=status::sucess
+          echo ::set-output name=status::success
 
       # Runs a set of commands using the runners shell
       - name: Commit Built Docker
@@ -47,7 +47,7 @@ jobs:
         if: steps.build.outputs.status == 'success'
         run: |
           bash -x scripts/upload-docker.sh
-          echo ::set-output name=status::sucess
+          echo ::set-output name=status::success
 
       - name: "[Debug] Wait for SSH connection (timeout 5min)"
         if: steps.build.outputs.status != 'success' || steps.commit.outputs.status != 'success'
