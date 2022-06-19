@@ -11,5 +11,5 @@ USER builder
 WORKDIR /home/builder
 
 # set dummy git config
-RUN git config --global builder.name "builder" && git config --global builder.email "builder@example.com"
+#RUN git config --global builder.name "builder" && git config --global builder.email "builder@example.com"
 
