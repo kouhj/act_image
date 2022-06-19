@@ -20,23 +20,18 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   Test-Docker-Iamge:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
       # Pull the docker container and test it
-      - name: Commit Built Docker
+      - name: Test Docker Builder
         id: test
         continue-on-error: true
-        if: steps.build.outputs.status == 'success'
         run: bash -x scripts/test-docker.sh && echo ::set-output name=status::success
 
       - name: "[Debug] Wait for SSH connection (timeout 5min)"
