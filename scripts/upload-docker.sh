@@ -8,7 +8,6 @@ BUILDER_IMAGE_ID="${builder_full_name}:${BUILDER_TAG}"
 BUILDER_CONTAINER_ID="$BUILDER_NAME"
 
 set -xeo pipefail
-echo "::set-output name=status::failure"
 
 echo '{
 "max-concurrent-downloads": 50,

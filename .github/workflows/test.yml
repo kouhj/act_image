@@ -1,0 +1,46 @@
+# This workflow tests the docker image by using it to compile a OpenWRT firmware
+
+env:
+  DK_IMAGE_NAME: "openwrt-buildenv"
+  DK_REGISTRY: ${{secrets.docker_registry}}
+  DK_USERNAME: ${{secrets.docker_username}}
+  DK_PASSWORD: ${{secrets.docker_password}}
+  TMATE_ENCRYPT_PASSWORD: ${{secrets.TMATE_ENCRYPT_PASSWORD}}
+
+name: Build Docker
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  Test-Docker-Iamge:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Pull the docker container and test it
+      - name: Commit Built Docker
+        id: test
+        continue-on-error: true
+        if: steps.build.outputs.status == 'success'
+        run: bash -x scripts/test-docker.sh && echo ::set-output name=status::success
+
+      - name: "[Debug] Wait for SSH connection (timeout 5min)"
+        if: steps.test.outputs.status != 'success'
+        env:
+          TIMEOUT_MIN: 5
+        uses: tete1030/safe-debugger-action@dev
