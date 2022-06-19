@@ -38,10 +38,11 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Commit Built Docker
+        id: commit
         run: bash -x scripts/upload-docker.sh
 
       - name: "[Debug] Wait for SSH connection (timeout 5min)"
-        if: job.status == 'failure'
+        if: step.commit.outputs.status != 'success'
         env:
           TIMEOUT_MIN: 5
         uses: tete1030/safe-debugger-action@dev
