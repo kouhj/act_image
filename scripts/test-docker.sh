@@ -39,10 +39,10 @@ echo "::set-output name=status::success"
 EOF
 
 docker run -d -t --name "${BUILDER_NAME}" \
-    -v '${GITHUB_ENV}:${GITHUB_ENV}' \
-    -v '${SCRIPT}:${SCRIPT}' \
+    -v "${GITHUB_ENV}:${GITHUB_ENV}" \
+    -v "${SCRIPT}:${SCRIPT}" \
     --env GITHUB_ENV=${GITHUB_ENV} \
     "${BUILDER_IMAGE_ID}"
 
-docker_exec "${BUILDER_NAME}" /bin/bash "$SCRIPT"
+docker exec "${BUILDER_NAME}" /bin/bash "$SCRIPT"
     
