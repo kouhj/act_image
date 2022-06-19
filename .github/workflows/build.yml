@@ -35,6 +35,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Build Docker
         id: build
+        continue-on-error: true
         run: |
           docker build -t ${{env.DK_IMAGE_NAME}} .
           echo ::set-output name=status::sucess
@@ -42,6 +43,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Commit Built Docker
         id: commit
+        continue-on-error: true
         run: |
           bash -x scripts/upload-docker.sh
           echo ::set-output name=status::sucess
