@@ -8,9 +8,9 @@ RUN set -x && apt-get update && apt-get upgrade -y && \
         lib32gcc-s1 libncurses5 libncurses5-dev zlib1g-dev libssl-dev \
         sudo time git subversion rsync curl gawk wget \
         flex gettext python3-distutils-extra \
-        proot qemu-user qemu-utils tmux && \
+        proot qemu-user qemu-utils tmux ack && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    rm -rf /var/cache/apt/* /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     useradd -m builder && \
     echo 'builder ALL=NOPASSWD: ALL' > /etc/sudoers.d/builder
 
