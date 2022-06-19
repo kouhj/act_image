@@ -34,7 +34,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Build Docker
-        run: docker build -t env.DK_IMAGE_NAME .
+        run: docker build -t ${{env.DK_IMAGE_NAME}} .
 
       # Runs a set of commands using the runners shell
       - name: Commit Built Docker
