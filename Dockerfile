@@ -3,7 +3,7 @@ FROM ubuntu:jammy
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN set -x && apt-get update && apt-get upgrade -y && \
-    apt-get install -y apt-utils && \
+    apt-get install -y apt-utils sudo && \
     useradd -m builder && \
     echo 'builder ALL=NOPASSWD: ALL' > /etc/sudoers.d/builder
 

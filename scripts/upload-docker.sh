@@ -29,5 +29,3 @@ echo "${DK_PASSWORD}" | docker login -u "${DK_USERNAME}" --password-stdin "${DK_
 docker push "${BUILDER_IMAGE_ID}"
 docker buildx imagetools create -t "${BUILDER_IMAGE_ID}" "${BUILDER_IMAGE_ID}"
 docker logout "${DK_REGISTRY}"
-
-echo "::set-output name=status::success"
