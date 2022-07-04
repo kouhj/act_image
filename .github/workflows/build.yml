@@ -20,6 +20,10 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  
+  schedule:
+    # 2:00AM GMT+8 every day
+    - cron: '0 18 * * *'
 
 jobs:
   Build-OpenWRT-BuildEnv-Docker-Iamge:
