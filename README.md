@@ -4,16 +4,17 @@ Builds a docker image, based on ubuntu:jammy, that is able to compile OpenWRT, a
 # Configure
 Set the following Repo Screts from Github Repo Settings:
 ```
-  DOCKER_USERNAME: The user name of hub.docker.io
-  DOCKER_PASSWORD: Access token of hub.docker.io
+  DOCKER_USERNAME: The user name of hub.docker.com
+  DOCKER_PASSWORD: Access token of hub.docker.com
+  GH_PAT: Github Personal Access Token, with read & write permissions
   TMATE_ENCRYPT_PASSWORD: Password used to encrypt the TMATE SSH connection.
 ```
 
 # Build
-Run the Build-OpenWRT-BuildEnv-Docker-Iamge workflow from Github Repo Actions. Upon completion with success, it will upload the image to hub.docker.io, and trigger the #Test workflow.
+Run the Build-OpenWRT-BuildEnv-Docker-Iamge workflow from Github Repo Actions. Upon completion with success, it will upload the image to hub.docker.com, and trigger the #Test workflow.
 
 # Test
-The Test-OpenWRT-Buildenv-Docker-Iamge workflow pulls the docker image "$DOCKER_USERNAME/openwrt-buildenv" from hub.docker.io, creates a container, and with which it compiles the latest OpenWRT source code.
+The Test-OpenWRT-Buildenv-Docker-Iamge workflow pulls the docker image "$DOCKER_USERNAME/openwrt-buildenv" from hub.docker.com, creates a container, and with which it compiles the latest OpenWRT source code.
 This workflow will be run when:
  - The Build workflow completes with success.
  - The files related with this workflow has been modified.
