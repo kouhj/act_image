@@ -1,5 +1,5 @@
 # OpenWRT BuildEnv Docker
-Builds a docker image based on ubuntu:jammy that is able to compile OpenWRT, and uploads to hub.docker.io with the name "$DOCKER_USERNAME/openwrt-buildenv", where DOCKER_USERNAME is set in Github Repo Secrets Settings.
+Builds a docker image, based on ubuntu:jammy, that is able to compile OpenWRT, and uploads to hub.docker.com with the name "$DOCKER_USERNAME/openwrt-buildenv", where DOCKER_USERNAME is set in Github Repo Secrets Settings.
 
 # Configure
 Set the following Repo Screts from Github Repo Settings:
