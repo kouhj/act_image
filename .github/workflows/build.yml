@@ -49,3 +49,10 @@ jobs:
         env:
           TIMEOUT_MIN: 5
         uses: tete1030/safe-debugger-action@dev
+
+      - name: Delete workflow runs
+        uses: GitRML/delete-workflow-runs@main
+        with:
+          retain_days: 3
+          keep_minimum_runs: 3
+          token: ${{secrets.GH_PAT}}
