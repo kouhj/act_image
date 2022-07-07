@@ -1,4 +1,5 @@
-me: Delete old workflow runs and releases
+name: Delete old workflow runs
+
 on:
   schedule:
     # Run daily at 2:34GMT+8/18:34UTC
