@@ -4,6 +4,12 @@ on:
   schedule:
     # Run daily at 2:34GMT+8/18:34UTC
     - cron: '34 2 * * *'
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 'Number of days.'
+        required: true
+        default: 7
 
 jobs:
   del_runs:
