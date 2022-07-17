@@ -18,6 +18,6 @@ jobs:
       - name: Delete workflow runs
         uses: GitRML/delete-workflow-runs@main
         with:
-          token: ${{ secrets.AUTH_PAT }}
+          token: ${{ secrets.GH_PAT }}
           repository: ${{ github.repository }}
           retain_days: 7
