@@ -5,7 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN set -x && apt-get update && apt-get upgrade -y && \
     apt-get install -y apt-utils sudo && \
     apt-get install -y \
-        zstd \
+        zstd bind9-dnsutils\
         build-essential gcc-multilib g++-multilib \
         lib32gcc-s1 libncurses5 libncurses5-dev zlib1g-dev libssl-dev \
         time git subversion rsync curl gawk wget jq tree \
