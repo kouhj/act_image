@@ -17,7 +17,7 @@ echo '{
 
 sudo service docker restart
 
-echo "${DK_PASSWORD}" | docker login -u "${DK_USERNAME}" --password-stdin "${DK_REGISTRY}"
+echo "${DK_PASSWORD}" | docker login -u "${DK_USERNAME}" --password-stdin ${DK_REGISTRY}
 docker image tag "${BUILDER_NAME}"  "${BUILDER_IMAGE_ID}" 
 docker push "${BUILDER_IMAGE_ID}"
 docker logout "${DK_REGISTRY}"

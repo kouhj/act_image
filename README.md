@@ -1,24 +1,12 @@
-# OpenWRT BuildEnv Docker
-Builds a docker image, based on ubuntu:jammy, that is able to compile OpenWRT, and uploads to hub.docker.com with the name "$DOCKER_USERNAME/openwrt-buildenv", where DOCKER_USERNAME is set in Github Repo Secrets Settings.
+# act
+This is a modified version of catthehacker/ubuntu:full-latest image used by nektos/act that is tailored to my needs.
 
 # Configure
 Set the following Repo Screts from Github Repo Settings:
 ```
-  DOCKER_USERNAME: The user name of hub.docker.com
-  DOCKER_PASSWORD: Access token of hub.docker.com
   GH_PAT: Github Personal Access Token, with read & write permissions
+  DK_REGISTRY: Docker registry URL, which is registry-1.docker.io if not set.
+  DK_USERNAME: User name for hub.docker.com
+  DK_PASSWORD: Access token for hub.docker.com
   TMATE_ENCRYPT_PASSWORD: Password used to encrypt the TMATE SSH connection.
 ```
-
-# Build
-Run the Build-OpenWRT-BuildEnv-Docker-Iamge workflow from Github Repo Actions. Upon completion with success, it will upload the image to hub.docker.com, and trigger the #Test workflow.
-
-# Test
-The Test-OpenWRT-Buildenv-Docker-Iamge workflow pulls the docker image "$DOCKER_USERNAME/openwrt-buildenv" from hub.docker.com, creates a container, and with which it compiles the latest OpenWRT source code.
-This workflow will be run when:
- - The Build workflow completes with success.
- - The files related with this workflow has been modified.
-
-# Debug
-When the workflow fails, it will invoke tete1030/safe-debugger-action@dev to provide the SSH access for debugging. Please read [this page](https://github.com/marketplace/actions/safe-action-debugger) for details.
-

@@ -1,13 +1,13 @@
 # This workflow pulls the ubuntu:jammy image and sets up the necessary tools for OpenWRT build
 
 env:
-  DK_IMAGE_NAME: "openwrt-buildenv"
+  DK_IMAGE_NAME: "act-full"
   DK_REGISTRY: ${{secrets.docker_registry}}
   DK_USERNAME: ${{secrets.docker_username}}
   DK_PASSWORD: ${{secrets.docker_password}}
   TMATE_ENCRYPT_PASSWORD: ${{secrets.TMATE_ENCRYPT_PASSWORD}}
 
-name: Build-OpenWRT-BuildEnv-Docker-Iamge
+name: Build-act-docker-image
 
 # Controls when the workflow will run
 on:
@@ -21,12 +21,12 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   
-  schedule:
-    # 2:00AM GMT+8 every day
-    - cron: '0 18 * * *'
+  #schedule:
+  #  # 2:00AM GMT+8 every day
+  #  - cron: '0 18 * * *'
 
 jobs:
-  Build-OpenWRT-BuildEnv-Docker-Iamge:
+  Build-act-docker-image:
     runs-on: ubuntu-latest
 
     steps:
